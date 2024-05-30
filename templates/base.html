@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+
+<ul>
+    <li>
+        <a href="{{url_for('home',) }} ">Головна</a>
+    </li>
+    <li>
+        <a href="{{url_for('home',) }} ">Головна</a>
+    </li>
+</ul>
+
+
+  {% block body %}
+  <li>
+   <a href="{{url_for('home',) }} ">Головна</a>
+  <li>
+   <a href="{{url_for('login',) }} ">Авторизація</a>
+     <li>
+     <a href="{{url_for('register',) }} ">Реєстрація</a>
+     <li>
+     <a href="{{url_for('users',) }} ">Користувачі</a>
+    <li>
+     <a href="{{url_for('about',) }} ">інформація про компанію </a>
+    </li>
+
+  {% endblock %}
+
+</body>
+</html>
