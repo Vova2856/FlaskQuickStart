@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% extends 'home.html' %}
+{% block content %}
+<form method='post'>
+ <label for="username">Username:</label><br>
+  <input id = 'username' type='text' name='username'><br>
+
+ <label for="lastname">Surname:</label><br>
+  <input id = 'lastname' type='text' name='lastname'><br>
+
+ <label for="age">Age:</label><br>
+  <input id = 'age' type='number' name='age'><br>
+
+ <button type='submit'>Submit</button>
+</form>
+<a href="{{ url_for('home') }}">Back to title</a>
+{% endblock %}
