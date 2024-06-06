@@ -3,6 +3,13 @@ from flask import render_template, Flask, request, redirect, url_for
 
 app = Flask(__name__)
 
+users = {
+    "vova": "123456",
+    "ivan": "000000",
+    "vasyl": "222222",
+    "roman": "654321",
+
+}
 
 @app.route("/")
 def home():
@@ -21,8 +28,9 @@ def show_post(post_id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == "POST":
-        return redirect(url_for('home'))
+    if request.method == 'POST':
+        if request.form['password'] == '123456':
+         return redirect(url_for('user', username=request.form['username']))
     return render_template('login.html')
 
 
