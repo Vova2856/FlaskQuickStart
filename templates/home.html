@@ -6,15 +6,45 @@
 </head>
 <body>
     <div>
-        <h1>Title!</h1>
+        <h1>Головна!</h1>
       <ul>
-          <li> <a href="{{ url_for('posts') }}">Go to posts!</a></li>
-          <li> <a href="{{ url_for('show_users_profile') }}">Go to users!</a> </li>
-          <li> <a href="{{ url_for('login') }}">Let's Login!</a> </li>
-          <li> <a href="{{ url_for('register') }}">Let's Sign up!</a> </li>
-          <li> <a href="{{ url_for('about') }}">About</a> </li>
+          <li> <a href="{{ url_for('posts') }}">Post!</a>
+          </li>
+          {% if 'username' in session %}
+          <li>
+                <a href="{{ url_for('logout') }}">Вилогінитись !</a>
+          </li>
+          {% endif %}
+          <li>
+              <a href="{{ url_for('show_users_profile') }}">Список користувачів!</a>
+          </li>
+          <li>
+              <a href="{{ url_for('login') }}">Авторизація!</a>
+          </li>
+          <li>
+              <a href="{{ url_for('register') }}">Реєстрація!</a>
+          </li>
+          <li>
+              <a href="{{ url_for('about') }}">About</a>
+          </li>
       </ul>
-    </div>
-{% block content %}{% endblock %}
+        </header>
+
+ <div>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+ </div>
+
+        <content>
+            {% block content %}{% endblock %}
+        </content>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 
-from flask import render_template, Flask, request, redirect, url_for, session
+from flask import render_template, Flask, request, redirect, url_for, session, flash
 
 app = Flask(__name__)
 
@@ -35,10 +35,19 @@ def login():
 
         if username in user_database and user_database[username] == password:
             session['username'] = username
+            flash('Вітаємо, ви успішно авторизувались')
 
             return redirect(url_for('user', username=username))
 
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+   username = session.pop('username', None)
+   if 'username':
+       flash('Бувайте, ви успішно вилогінились')
+
+   return redirect(url_for('home'))
 
 
 @app.route('/register')
